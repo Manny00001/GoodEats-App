@@ -19,7 +19,6 @@ const posts = [
 ];
 
 let postIndex = 0;
-let currentIndex = 0;
 
 function makeSlide() {
   const post = posts[postIndex % posts.length];
@@ -54,32 +53,20 @@ function makeSlide() {
   return slide;
 }
 
-function fillInitialFeed() {
-  feed.innerHTML = "";
-  for (let i = 0; i < 5; i++) {
-    feed.appendChild(makeSlide());
-  }
+for (let i = 0; i < 6; i++) {
+  feed.appendChild(makeSlide());
 }
 
-fillInitialFeed();
-
 feed.addEventListener("scroll", () => {
-  const slideHeight = feed.clientHeight;
-  const newIndex = Math.round(feed.scrollTop / slideHeight);
-
-  if (newIndex !== currentIndex) {
-    currentIndex = newIndex;
-  }
-
-  const nearBottom = feed.scrollTop + feed.clientHeight >= feed.scrollHeight - slideHeight * 2;
+  const nearBottom = feed.scrollTop + feed.clientHeight >= feed.scrollHeight - 1000;
 
   if (nearBottom) {
     feed.appendChild(makeSlide());
   }
 
-  if (feed.children.length > 7) {
+  if (feed.children.length > 9) {
+    const firstHeight = feed.firstElementChild.offsetHeight;
     feed.removeChild(feed.firstElementChild);
-    feed.scrollTop -= slideHeight;
-    currentIndex = Math.max(0, currentIndex - 1);
+    feed.scrollTop -= firstHeight;
   }
 });
