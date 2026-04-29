@@ -162,13 +162,18 @@ body {
   padding: 0;
 }
 
+.menu-lines div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .menu-lines span {
-  width: 20px;
+  width: 21px;
   height: 2px;
   background: white;
   border-radius: 999px;
   display: block;
-  margin: 3px 0;
 }
 
 .bottom-nav {
@@ -185,7 +190,8 @@ body {
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 
-.bottom-nav button {
+.bottom-nav button,
+.bottom-nav a {
   background: none;
   border: none;
   color: white;
@@ -195,6 +201,7 @@ body {
   align-items: center;
   gap: 2px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .bottom-nav span {
