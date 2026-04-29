@@ -19,8 +19,9 @@ const posts = [
 ];
 
 let postIndex = 0;
+let currentIndex = 0;
 
-function createPost() {
+function makeSlide() {
   const post = posts[postIndex % posts.length];
   postIndex++;
 
@@ -30,7 +31,6 @@ function createPost() {
   slide.innerHTML = `
     <div class="video-area">
       <div class="loading-circle"></div>
-      <div class="play-icon">▶</div>
     </div>
 
     <div class="caption">
@@ -42,24 +42,44 @@ function createPost() {
       <p>${post.desc}</p>
     </div>
 
-    <div class="actions">
-      <button class="dots">•••</button>
-    </div>
+    <button class="menu-lines" aria-label="More options">
+      <div>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
   `;
 
-  feed.appendChild(slide);
+  return slide;
 }
 
-for (let i = 0; i < 6; i++) {
-  createPost();
+function fillInitialFeed() {
+  feed.innerHTML = "";
+  for (let i = 0; i < 5; i++) {
+    feed.appendChild(makeSlide());
+  }
 }
+
+fillInitialFeed();
 
 feed.addEventListener("scroll", () => {
-  const nearBottom = feed.scrollTop + feed.clientHeight >= feed.scrollHeight - 900;
+  const slideHeight = feed.clientHeight;
+  const newIndex = Math.round(feed.scrollTop / slideHeight);
+
+  if (newIndex !== currentIndex) {
+    currentIndex = newIndex;
+  }
+
+  const nearBottom = feed.scrollTop + feed.clientHeight >= feed.scrollHeight - slideHeight * 2;
 
   if (nearBottom) {
-    for (let i = 0; i < 3; i++) {
-      createPost();
-    }
+    feed.appendChild(makeSlide());
+  }
+
+  if (feed.children.length > 7) {
+    feed.removeChild(feed.firstElementChild);
+    feed.scrollTop -= slideHeight;
+    currentIndex = Math.max(0, currentIndex - 1);
   }
 });
