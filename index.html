@@ -9,49 +9,54 @@
 <body>
 
   <main class="app">
-    <header class="topbar">
-      <h1>Learnix</h1>
-      <div class="stats">
-        <span>🔥 <b id="streak">1</b></span>
-        <span>XP <b id="xp">0</b></span>
-      </div>
+
+    <header class="top-stats">
+      <div class="stat">🧬 <span>1</span></div>
+      <div class="stat faded">🔥 <span>0</span></div>
+      <div class="stat">💎 <span>680</span></div>
+      <div class="stat">⚡ <span>∞</span></div>
     </header>
 
-    <section id="homeScreen">
-      <div class="course-header">
-        <p class="label">Biology Basics</p>
-        <h2>Start your path</h2>
-        <p>Complete short quiz lessons and earn XP.</p>
-
-        <div class="progress-bar">
-          <div id="progressFill"></div>
-        </div>
-        <p id="progressText">0% complete</p>
+    <section class="unit-card">
+      <div>
+        <p>SECTION 1, UNIT 1</p>
+        <h1>Biology Basics</h1>
       </div>
 
-      <div class="lesson-path">
-        <button class="lesson-bubble" onclick="startLesson(0)">1</button>
-        <button class="lesson-bubble locked" onclick="startLesson(1)">2</button>
-        <button class="lesson-bubble locked" onclick="startLesson(2)">3</button>
-      </div>
+      <button class="unit-btn">☰</button>
     </section>
 
-    <section id="lessonScreen" class="hidden">
-      <button class="back-btn" onclick="goHome()">← Back</button>
+    <section class="path">
 
-      <div class="quiz-card">
-        <p class="label" id="lessonLabel">Lesson 1</p>
-        <h2 id="lessonTitle">What is a cell?</h2>
-        <p id="lessonText"></p>
+      <button class="lesson active" onclick="selectLesson(1)">★</button>
 
-        <h3 id="question"></h3>
+      <button class="lesson" onclick="selectLesson(2)">★</button>
 
-        <div id="choices"></div>
+      <div class="chest">🎁</div>
 
-        <p id="feedback"></p>
-      </div>
+      <button class="lesson locked" onclick="selectLesson(3)">★</button>
+
+      <div class="boss">🧠</div>
+
+      <button class="lesson locked big" onclick="selectLesson(4)">!</button>
+
     </section>
+
+    <div class="unit-title">
+      <span></span>
+      <p>Cells and Life</p>
+      <span></span>
+    </div>
+
   </main>
+
+  <nav class="bottom-nav">
+    <button class="selected">🏠</button>
+    <button>📚</button>
+    <button>🏆</button>
+    <button>💬</button>
+    <button>⚙️</button>
+  </nav>
 
   <script src="script.js"></script>
 </body>
