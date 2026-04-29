@@ -50,45 +50,30 @@ body {
   z-index: 30;
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 0 18px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.top-tabs::-webkit-scrollbar {
-  display: none;
+  justify-content: center;
 }
 
 .top-tabs button {
   background: none;
   border: none;
-  color: rgba(255,255,255,0.62);
-  font-size: 18px;
-  font-weight: 800;
-  white-space: nowrap;
+  color: white;
+  font-size: 20px;
+  font-weight: 900;
 }
 
 .top-tabs .active {
-  color: white;
   position: relative;
 }
 
 .top-tabs .active::after {
   content: "";
   position: absolute;
-  left: 28%;
-  right: 28%;
+  left: 18%;
+  right: 18%;
   bottom: -8px;
   height: 3px;
   background: white;
   border-radius: 999px;
-}
-
-.top-tabs .search {
-  margin-left: auto;
-  font-size: 32px;
-  color: white;
 }
 
 .video-box {
@@ -98,7 +83,7 @@ body {
   top: 30%;
   height: 35%;
   background:
-    radial-gradient(circle at center, rgba(255, 159, 28, 0.14), transparent 35%),
+    radial-gradient(circle at center, rgba(255, 159, 28, 0.12), transparent 35%),
     linear-gradient(135deg, #161616, #070707);
   border-top: 1px solid rgba(255,255,255,0.08);
   border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -128,42 +113,11 @@ body {
   }
 }
 
-.actions {
-  position: absolute;
-  right: 16px;
-  bottom: 215px;
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  gap: 17px;
-}
-
-.actions button {
-  width: 58px;
-  min-height: 62px;
-  border: none;
-  background: none;
-  color: white;
-  font-size: 39px;
-  font-weight: 900;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-  cursor: pointer;
-}
-
-.actions span {
-  font-size: 13px;
-  font-weight: 800;
-}
-
 .caption {
   position: absolute;
   left: 18px;
-  right: 92px;
-  bottom: 128px;
+  right: 18px;
+  bottom: 118px;
   z-index: 20;
 }
 
@@ -188,36 +142,6 @@ body {
   color: #e8e8e8;
   font-size: 16px;
   line-height: 1.35;
-}
-
-.search-bar {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 78px;
-  height: 42px;
-  z-index: 25;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 18px;
-  background: rgba(22,22,22,0.95);
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
-
-.search-bar span {
-  font-size: 24px;
-}
-
-.search-bar p {
-  margin: 0;
-  flex: 1;
-  font-weight: 700;
-  color: white;
-}
-
-.search-bar b {
-  font-size: 28px;
 }
 
 .bottom-nav {
@@ -270,28 +194,5 @@ body {
   .phone {
     border-left: 1px solid #222;
     border-right: 1px solid #222;
-  }
-}
-
-@media (max-width: 430px) {
-  .top-tabs {
-    gap: 14px;
-  }
-
-  .top-tabs button {
-    font-size: 16px;
-  }
-
-  .video-box {
-    top: 31%;
-    height: 33%;
-  }
-
-  .caption {
-    bottom: 128px;
-  }
-
-  .actions {
-    bottom: 215px;
   }
 }
