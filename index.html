@@ -3,156 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GoodEats</title>
+  <title>GoodEats App</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header class="nav">
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+  <main class="feed">
 
-    <div class="logo">GoodEats</div>
-  </header>
+    <section class="video-slide">
+      <div class="loading-circle"></div>
 
-  <div class="side-menu" id="sideMenu">
-    <a href="#waitlist">Waitlist</a>
-    <a href="#mission">Our Mission</a>
-    <a href="#about">About</a>
-    <a href="#development">Development</a>
-  </div>
-
-  <section class="hero" id="waitlist">
-    <div class="hero-bg-grid">
-      <img src="pizza.jpg" alt="Pizza">
-      <img src="breadsticks.jpg" alt="Breadsticks">
-      <img src="salad.jpg" alt="Salad">
-    </div>
-
-    <div class="hero-content">
-      <p class="mini-text">CHEAP, QUICK, GOOD FOOD</p>
-      <h1 class="brand-title">GoodEats</h1>
-
-      <p class="tagline">
-        Simple meals, real recipes, and everyday food ideas made easier to find.
-      </p>
-
-      <form class="waitlist" id="waitlistForm">
-        <p>Join the waitlist</p>
-
-        <div class="email-row">
-          <input
-            type="email"
-            name="email"
-            id="emailInput"
-            placeholder="Enter your email"
-            required
-          />
-          <button type="submit">Join</button>
-        </div>
-
-        <p class="success-message" id="successMessage">
-          Joined the GoodEats Waitlist!
-        </p>
-      </form>
-
-      <div class="scroll-down">↓</div>
-    </div>
-  </section>
-
-  <section class="mission" id="mission">
-    <div class="section-inner">
-      <p class="section-label">OUR MISSION</p>
-      <h2>Food should feel simple again.</h2>
-
-      <p>
-        GoodEats is being built around the idea that finding something good to eat should not feel complicated, expensive, or overwhelming. Many recipe platforms are filled with long stories, hard-to-follow steps, unrealistic ingredients, and meals that do not match how people actually cook day to day. Our mission is to create a cleaner, more practical place for people to discover meals that are quick, affordable, and realistic. Whether someone is a student, living in a dorm, cooking on a budget, or simply tired of scrolling through endless food posts with no clear direction, GoodEats is meant to make the decision easier. The goal is to organize food around what people actually care about: how long it takes, how much it costs, what tools are needed, how difficult it is, and whether it is actually worth making. As GoodEats develops, the focus will stay on clarity, usefulness, and accessibility, giving users a better way to find everyday meals without turning cooking into something stressful.
-      </p>
-    </div>
-  </section>
-
-  <section class="about" id="about">
-    <div class="section-inner">
-      <p class="section-label">ABOUT</p>
-      <h2>What is GoodEats?</h2>
-
-      <p>
-        GoodEats is a food discovery app focused on simple recipes, quick meals, and cheap eats that normal people actually want to make. The app is planned to help users browse meals by budget, time, difficulty, and available cooking tools, making it easier to find something that fits their situation instead of forcing them to search through random recipes.
-      </p>
-    </div>
-  </section>
-
-  <section class="development" id="development">
-    <div class="devlogs-inner">
-      <p class="section-label">PROJECT UPDATES</p>
-      <h2>Development</h2>
-
-      <div class="log-card">
-        <p class="date">April 29, 2026</p>
-        <h3>GoodEats Started</h3>
-        <p>
-          GoodEats has officially started. This website will track early updates,
-          recipe previews, planning decisions, and future development progress.
-        </p>
+      <div class="overlay">
+        <p class="tag">GoodEats</p>
+        <h1>Recipes coming soon</h1>
+        <p>Scroll through quick meals, cheap eats, and food ideas.</p>
       </div>
 
-      <div class="log-card">
-        <p class="date">April 29, 2026</p>
-        <h3>Waitlist Added</h3>
-        <p>
-          The GoodEats waitlist is now live. Early users can submit their email
-          to follow the project and receive future updates.
-        </p>
+      <div class="actions">
+        <button>♡</button>
+        <button>💬</button>
+        <button>↗</button>
+      </div>
+    </section>
+
+    <section class="video-slide">
+      <div class="loading-circle"></div>
+
+      <div class="overlay">
+        <p class="tag">Budget Meals</p>
+        <h1>Under $5 meals</h1>
+        <p>Find food based on your budget, tools, and time.</p>
       </div>
 
-      <div class="log-card">
-        <p class="date">Coming Soon</p>
-        <h3>Recipe Uploads</h3>
-        <p>
-          Future versions may allow users to upload recipes, save meals, browse by
-          budget, filter by cooking tools, and discover food that fits their lifestyle.
-        </p>
+      <div class="actions">
+        <button>♡</button>
+        <button>💬</button>
+        <button>↗</button>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const sideMenu = document.getElementById("sideMenu");
+    <section class="video-slide">
+      <div class="loading-circle"></div>
 
-    menuBtn.addEventListener("click", () => {
-      sideMenu.classList.toggle("open");
-      menuBtn.classList.toggle("open");
-    });
+      <div class="overlay">
+        <p class="tag">Dorm Friendly</p>
+        <h1>No fancy kitchen needed</h1>
+        <p>Microwave, air fryer, no-cook, and simple recipes.</p>
+      </div>
 
-    const form = document.getElementById("waitlistForm");
-    const emailInput = document.getElementById("emailInput");
-    const successMessage = document.getElementById("successMessage");
+      <div class="actions">
+        <button>♡</button>
+        <button>💬</button>
+        <button>↗</button>
+      </div>
+    </section>
 
-    form.addEventListener("submit", async function(event) {
-      event.preventDefault();
+  </main>
 
-      const formData = new FormData(form);
-
-      await fetch("https://formspree.io/f/xkoywnwj", {
-        method: "POST",
-        body: formData,
-        headers: {
-          "Accept": "application/json"
-        }
-      });
-
-      emailInput.value = "";
-      successMessage.classList.add("show");
-
-      setTimeout(() => {
-        successMessage.classList.remove("show");
-      }, 3000);
-    });
-  </script>
+  <nav class="bottom-nav">
+    <button class="active">Home</button>
+    <button>Search</button>
+    <button>Upload</button>
+    <button>Saved</button>
+  </nav>
 
 </body>
 </html>
