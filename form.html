@@ -1,1 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit Dish | GoodEats</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #0b0b0b;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 40px 18px;
+    }
+
+    .form-page {
+      width: 100%;
+      max-width: 620px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 10vw, 78px);
+      line-height: 0.95;
+      letter-spacing: -4px;
+      margin: 0 0 12px;
+    }
+
+    .subtitle {
+      color: #cfcfcf;
+      font-size: 18px;
+      line-height: 1.45;
+      margin-bottom: 32px;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    label {
+      font-weight: 800;
+      color: #ffb347;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      background: #181818;
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 12px;
+      padding: 17px;
+      border: none;
+      border-radius: 14px;
+      background: #ff9f1c;
+      color: white;
+      font-size: 17px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .hint {
+      color: #999;
+      font-size: 13px;
+      margin-top: -8px;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="form-page">
+    <h1>Submit your dish.</h1>
+    <p class="subtitle">
+      This is a test form for GoodEats. Submit a dish idea, photos, price, ingredients, and cooking tools.
+    </p>
+
+    <form action="https://formspree.io/f/xwvyerqr" method="POST" enctype="multipart/form-data">
+
+      <div>
+        <label>Email</label>
+        <input type="email" name="email" placeholder="your@email.com" required>
+      </div>
+
+      <div>
+        <label>Dish Images</label>
+        <input type="file" name="dish_images" accept="image/*" multiple required>
+        <p class="hint">Upload 1–3 images of your dish.</p>
+      </div>
+
+      <div>
+        <label>Food Name</label>
+        <input type="text" name="food_name" placeholder="Example: Garlic Chicken Rice Bowl" required>
+      </div>
+
+      <div>
+        <label>Estimated Price</label>
+        <input type="text" name="estimated_price" placeholder="Example: $4.50">
+      </div>
+
+      <div>
+        <label>Ingredients</label>
+        <textarea name="ingredients" placeholder="List the ingredients..." required></textarea>
+      </div>
+
+      <div>
+        <label>Main Cooking Appliances</label>
+        <input type="text" name="appliances" placeholder="Example: microwave, air fryer, stove, oven">
+      </div>
+
+      <div>
+        <label>Description / Notes</label>
+        <textarea name="description" placeholder="Short description, steps, tips, or anything else..."></textarea>
+      </div>
+
+      <button type="submit">Submit Dish</button>
+    </form>
+  </main>
+
+</body>
+</html>
