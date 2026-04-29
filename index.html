@@ -3,79 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learnix App</title>
+  <title>GoodEats App</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <main class="app">
+  <main class="feed">
 
-    <header class="top-stats">
-      <div class="stat">🧬 <span>1</span></div>
-      <div class="stat faded">🔥 <span>0</span></div>
-      <div class="stat">💎 <span>680</span></div>
-      <div class="stat">⚡ <span>∞</span></div>
-    </header>
+    <section class="video-slide">
+      <div class="loading-circle"></div>
 
-    <section class="unit-card">
-      <div>
-        <p>SECTION 1, UNIT 1</p>
-        <h1>Biology Basics</h1>
+      <div class="overlay">
+        <p class="tag">GoodEats</p>
+        <h1>Recipes coming soon</h1>
+        <p>Scroll through quick meals, cheap eats, and food ideas.</p>
       </div>
 
-      <button class="unit-btn">☰</button>
+      <div class="actions">
+        <button>♡</button>
+        <button>💬</button>
+        <button>↗</button>
+      </div>
     </section>
 
-    <section class="path">
+    <section class="video-slide">
+      <div class="loading-circle"></div>
 
-      <button class="lesson active" onclick="selectLesson(1)">★</button>
-
-      <div class="footprints fp-1">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="overlay">
+        <p class="tag">Budget Meals</p>
+        <h1>Under $5 meals</h1>
+        <p>Find food based on your budget, tools, and time.</p>
       </div>
 
-      <button class="lesson" onclick="selectLesson(2)">★</button>
-
-      <div class="footprints fp-2">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="actions">
+        <button>♡</button>
+        <button>💬</button>
+        <button>↗</button>
       </div>
-
-      <div class="chest">🎁</div>
-
-      <button class="lesson locked" onclick="selectLesson(3)">★</button>
-
-      <div class="footprints fp-3">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <div class="boss">🧠</div>
-
-      <button class="lesson locked big" onclick="selectLesson(4)">!</button>
-
     </section>
 
-    <div class="unit-title">
-      <span></span>
-      <p>Cells and Life</p>
-      <span></span>
-    </div>
+    <section class="video-slide">
+      <div class="loading-circle"></div>
+
+      <div class="overlay">
+        <p class="tag">Dorm Friendly</p>
+        <h1>No fancy kitchen needed</h1>
+        <p>Microwave, air fryer, no-cook, and simple recipes.</p>
+      </div>
+
+      <div class="actions">
+        <button>♡</button>
+        <button>💬</button>
+        <button>↗</button>
+      </div>
+    </section>
 
   </main>
 
   <nav class="bottom-nav">
-    <button class="selected">🏠</button>
-    <button>📚</button>
-    <button>🏆</button>
-    <button>💬</button>
-    <button>⚙️</button>
+    <button class="active">Home</button>
+    <button>Search</button>
+    <button>Upload</button>
+    <button>Saved</button>
   </nav>
 
-  <script src="script.js"></script>
 </body>
 </html>
