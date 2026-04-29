@@ -37,8 +37,51 @@ body {
   height: 100vh;
   position: relative;
   scroll-snap-align: start;
-  background: black;
   overflow: hidden;
+  background: black;
+}
+
+.video-area {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, rgba(255, 159, 28, 0.08), transparent 36%),
+    linear-gradient(135deg, #171717, #030303);
+  display: grid;
+  place-items: center;
+}
+
+.video-area::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent 48%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 32%);
+}
+
+.loading-circle {
+  width: 72px;
+  height: 72px;
+  border: 6px solid rgba(255,255,255,0.16);
+  border-top-color: #ff9f1c;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 2;
+}
+
+.play-icon {
+  position: absolute;
+  font-size: 72px;
+  color: rgba(255,255,255,0.24);
+  transform: translateX(6px);
+  z-index: 3;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .top-tabs {
@@ -61,87 +104,76 @@ body {
   font-weight: 900;
 }
 
-.top-tabs .active {
-  position: relative;
-}
-
 .top-tabs .active::after {
   content: "";
-  position: absolute;
-  left: 18%;
-  right: 18%;
-  bottom: -8px;
+  display: block;
+  width: 34px;
   height: 3px;
   background: white;
   border-radius: 999px;
-}
-
-.video-box {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 30%;
-  height: 35%;
-  background:
-    radial-gradient(circle at center, rgba(255, 159, 28, 0.12), transparent 35%),
-    linear-gradient(135deg, #161616, #070707);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  display: grid;
-  place-items: center;
-}
-
-.loading-circle {
-  width: 68px;
-  height: 68px;
-  border: 6px solid rgba(255,255,255,0.14);
-  border-top-color: #ff9f1c;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-.play-icon {
-  position: absolute;
-  font-size: 70px;
-  color: rgba(255,255,255,0.28);
-  transform: translateX(6px);
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  margin: 8px auto 0;
 }
 
 .caption {
   position: absolute;
   left: 18px;
-  right: 18px;
-  bottom: 118px;
+  right: 82px;
+  bottom: 105px;
   z-index: 20;
 }
 
-.recipe-pill {
-  display: inline-block;
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+
+.tag {
   background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.08);
   color: white;
-  padding: 8px 12px;
-  border-radius: 8px;
-  margin: 0 0 14px;
-  font-size: 17px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
   backdrop-filter: blur(8px);
 }
 
 .caption h3 {
-  margin: 0 0 7px;
-  font-size: 22px;
+  margin: 0 0 8px;
+  font-size: 23px;
+  font-weight: 900;
 }
 
 .caption p {
   margin: 0;
   color: #e8e8e8;
   font-size: 16px;
-  line-height: 1.35;
+  line-height: 1.38;
+}
+
+.actions {
+  position: absolute;
+  right: 15px;
+  bottom: 125px;
+  z-index: 22;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.dots {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.14);
+  color: white;
+  font-size: 30px;
+  font-weight: 900;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
 }
 
 .bottom-nav {
@@ -154,7 +186,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: black;
+  background: rgba(0,0,0,0.94);
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 .bottom-nav button {
