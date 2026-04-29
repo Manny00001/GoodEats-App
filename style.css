@@ -56,7 +56,7 @@ body {
 
 .unit-card p {
   margin: 0 0 8px;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.75);
   font-size: 14px;
   font-weight: 900;
   letter-spacing: 1px;
@@ -71,11 +71,12 @@ body {
 .unit-btn {
   width: 78px;
   border: none;
-  border-left: 4px solid rgba(0,0,0,0.15);
-  background: rgba(0,0,0,0.08);
+  border-left: 4px solid rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.08);
   color: white;
   font-size: 34px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .path {
@@ -97,6 +98,7 @@ body {
   display: grid;
   place-items: center;
   margin: 0 auto 34px;
+  cursor: pointer;
 }
 
 .lesson.active {
@@ -186,11 +188,12 @@ body {
   border: none;
   background: transparent;
   font-size: 30px;
+  cursor: pointer;
 }
 
 .bottom-nav .selected {
   border: 3px solid #4fb6e8;
-  background: rgba(79,182,232,0.12);
+  background: rgba(79, 182, 232, 0.12);
 }
 
 @media (max-width: 420px) {
