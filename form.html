@@ -42,20 +42,21 @@
 
     form {
       display: grid;
-      gap: 16px;
+      gap: 18px;
     }
 
     label {
+      display: block;
       font-weight: 800;
       color: #ffb347;
       font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 1px;
+      margin-bottom: 8px;
     }
 
     input,
-    textarea,
-    select {
+    textarea {
       width: 100%;
       padding: 16px;
       border: 1px solid rgba(255,255,255,0.12);
@@ -67,11 +68,23 @@
     }
 
     textarea {
-      min-height: 110px;
+      min-height: 95px;
       resize: vertical;
     }
 
-    button {
+    .small-btn {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid rgba(255, 159, 28, 0.35);
+      border-radius: 14px;
+      background: rgba(255, 159, 28, 0.12);
+      color: #ffb347;
+      font-size: 15px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .submit-btn {
       margin-top: 12px;
       padding: 17px;
       border: none;
@@ -86,7 +99,12 @@
     .hint {
       color: #999;
       font-size: 13px;
-      margin-top: -8px;
+      margin: 8px 0 0;
+    }
+
+    .step-box,
+    .tag-box {
+      margin-bottom: 12px;
     }
   </style>
 </head>
@@ -95,20 +113,14 @@
   <main class="form-page">
     <h1>Submit your dish.</h1>
     <p class="subtitle">
-      This is a test form for GoodEats. Submit a dish idea, photos, price, ingredients, and cooking tools.
+      Share a food idea for GoodEats. Add the name, price, ingredients, appliances, steps, and up to three tags.
     </p>
 
-    <form action="https://formspree.io/f/xwvyerqr" method="POST" enctype="multipart/form-data">
+    <form action="https://formspree.io/f/xwvyerqr" method="POST">
 
       <div>
         <label>Email</label>
         <input type="email" name="email" placeholder="your@email.com" required>
-      </div>
-
-      <div>
-        <label>Dish Images</label>
-        <input type="file" name="dish_images" accept="image/*" multiple required>
-        <p class="hint">Upload 1–3 images of your dish.</p>
       </div>
 
       <div>
@@ -132,13 +144,84 @@
       </div>
 
       <div>
-        <label>Description / Notes</label>
-        <textarea name="description" placeholder="Short description, steps, tips, or anything else..."></textarea>
+        <label>Steps</label>
+        <div id="steps"></div>
+        <button type="button" class="small-btn" id="addStepBtn">+ Add Step</button>
+        <p class="hint">Maximum 10 steps.</p>
       </div>
 
-      <button type="submit">Submit Dish</button>
+      <div>
+        <label>Tags</label>
+        <div id="tags"></div>
+        <button type="button" class="small-btn" id="addTagBtn">+ Add Tag</button>
+        <p class="hint">Maximum 3 tags. Example: cheap, quick, dorm-friendly.</p>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Dish</button>
     </form>
   </main>
+
+  <script>
+    const stepsDiv = document.getElementById("steps");
+    const tagsDiv = document.getElementById("tags");
+    const addStepBtn = document.getElementById("addStepBtn");
+    const addTagBtn = document.getElementById("addTagBtn");
+
+    let stepCount = 0;
+    let tagCount = 0;
+
+    function addStep() {
+      if (stepCount >= 10) return;
+
+      stepCount++;
+
+      const wrap = document.createElement("div");
+      wrap.className = "step-box";
+
+      wrap.innerHTML = `
+        <textarea 
+          name="step_${stepCount}" 
+          placeholder="Step ${stepCount}" 
+          required
+        ></textarea>
+      `;
+
+      stepsDiv.appendChild(wrap);
+
+      if (stepCount >= 10) {
+        addStepBtn.style.display = "none";
+      }
+    }
+
+    function addTag() {
+      if (tagCount >= 3) return;
+
+      tagCount++;
+
+      const wrap = document.createElement("div");
+      wrap.className = "tag-box";
+
+      wrap.innerHTML = `
+        <input 
+          type="text" 
+          name="tag_${tagCount}" 
+          placeholder="Tag ${tagCount}" 
+        >
+      `;
+
+      tagsDiv.appendChild(wrap);
+
+      if (tagCount >= 3) {
+        addTagBtn.style.display = "none";
+      }
+    }
+
+    addStepBtn.addEventListener("click", addStep);
+    addTagBtn.addEventListener("click", addTag);
+
+    addStep();
+    addTag();
+  </script>
 
 </body>
 </html>
