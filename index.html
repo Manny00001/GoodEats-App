@@ -17,65 +17,41 @@
       </div>
     </header>
 
-    <section class="hero-card">
-      <p class="label">Current Course</p>
-      <h2>Biology Basics</h2>
-      <p>Start your first learning path with short lessons and quizzes.</p>
+    <section id="homeScreen">
+      <div class="course-header">
+        <p class="label">Biology Basics</p>
+        <h2>Start your path</h2>
+        <p>Complete short quiz lessons and earn XP.</p>
 
-      <div class="progress-wrap">
         <div class="progress-bar">
           <div id="progressFill"></div>
         </div>
         <p id="progressText">0% complete</p>
       </div>
+
+      <div class="lesson-path">
+        <button class="lesson-bubble" onclick="startLesson(0)">1</button>
+        <button class="lesson-bubble locked" onclick="startLesson(1)">2</button>
+        <button class="lesson-bubble locked" onclick="startLesson(2)">3</button>
+      </div>
     </section>
 
-    <section class="lessons">
-      <h3>Lessons</h3>
+    <section id="lessonScreen" class="hidden">
+      <button class="back-btn" onclick="goHome()">← Back</button>
 
-      <button class="lesson-card" onclick="openLesson(0)">
-        <span>01</span>
-        <div>
-          <h4>What is a cell?</h4>
-          <p>Learn the basic unit of life.</p>
-        </div>
-      </button>
+      <div class="quiz-card">
+        <p class="label" id="lessonLabel">Lesson 1</p>
+        <h2 id="lessonTitle">What is a cell?</h2>
+        <p id="lessonText"></p>
 
-      <button class="lesson-card locked" onclick="openLesson(1)">
-        <span>02</span>
-        <div>
-          <h4>Cell Parts</h4>
-          <p>Explore organelles and their jobs.</p>
-        </div>
-      </button>
+        <h3 id="question"></h3>
 
-      <button class="lesson-card locked" onclick="openLesson(2)">
-        <span>03</span>
-        <div>
-          <h4>Mitosis</h4>
-          <p>Understand how cells divide.</p>
-        </div>
-      </button>
+        <div id="choices"></div>
+
+        <p id="feedback"></p>
+      </div>
     </section>
   </main>
-
-  <div class="modal" id="lessonModal">
-    <div class="modal-box">
-      <button class="close" onclick="closeLesson()">×</button>
-      <p class="label" id="lessonNumber">Lesson 01</p>
-      <h2 id="lessonTitle">What is a cell?</h2>
-      <p id="lessonText"></p>
-
-      <div class="quiz">
-        <h3 id="question"></h3>
-        <button onclick="answerQuiz(0)" id="choice0"></button>
-        <button onclick="answerQuiz(1)" id="choice1"></button>
-        <button onclick="answerQuiz(2)" id="choice2"></button>
-      </div>
-
-      <p id="feedback"></p>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
