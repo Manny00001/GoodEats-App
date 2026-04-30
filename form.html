@@ -17,7 +17,6 @@
       --muted: #666;
       --line: #1f1f1f;
       --accent: #c7864a;
-      --accent-soft: #e7d2bf;
       --error: #c62828;
     }
 
@@ -148,12 +147,6 @@
       gap: 14px;
     }
 
-    .row-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
     .chips {
       display: flex;
       flex-wrap: wrap;
@@ -203,6 +196,11 @@
       background: #f1ece6;
     }
 
+    .small-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
     .submit-wrap {
       margin-top: 8px;
       display: flex;
@@ -217,10 +215,6 @@
       font-size: 15px;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-    }
-
-    .submit-btn:hover {
-      filter: brightness(0.96);
     }
 
     .required-note {
@@ -242,22 +236,8 @@
     }
 
     .field-error input,
-    .field-error textarea,
-    .field-error select {
+    .field-error textarea {
       border-bottom-color: var(--error);
-    }
-
-    .prep-lines {
-      display: grid;
-      gap: 8px;
-      margin-top: 16px;
-      opacity: 0.35;
-    }
-
-    .prep-lines span {
-      display: block;
-      height: 2px;
-      background: #444;
     }
 
     .footer-mark {
@@ -271,8 +251,8 @@
     }
 
     .footer-mark .plate {
-      font-size: 22px;
-      letter-spacing: 6px;
+      font-size: 18px;
+      letter-spacing: 5px;
     }
 
     @media (max-width: 860px) {
@@ -286,8 +266,7 @@
     }
 
     @media (max-width: 560px) {
-      .row-2,
-      .row-3 {
+      .row-2 {
         grid-template-columns: 1fr;
       }
 
@@ -311,6 +290,7 @@
     }
   </style>
 </head>
+
 <body>
   <main class="page">
     <div class="topbar">
@@ -320,7 +300,7 @@
 
     <div class="top-line"></div>
 
-    <form id="recipeForm" action="https://formspree.io/f/xwvyerqr" method="POST" novalidate>
+    <form id="recipeForm" action="https://formspree.io/f/xwvyerqr" method="POST" novalidate autocomplete="off">
       <div class="left-col">
         <section class="section">
           <h2 class="section-title">Recipe Details</h2>
@@ -419,11 +399,6 @@
           </div>
 
           <div class="required-note">Add up to 10 steps.</div>
-
-          <div class="prep-lines">
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span>
-          </div>
         </section>
 
         <div class="submit-wrap">
