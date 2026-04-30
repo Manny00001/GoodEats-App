@@ -12,7 +12,6 @@
 
     :root {
       --bg: #f4f1ec;
-      --card: #fbf8f4;
       --text: #171717;
       --muted: #666;
       --line: #1f1f1f;
@@ -101,10 +100,6 @@
       margin-bottom: 14px;
     }
 
-    .field-block:last-child {
-      margin-bottom: 0;
-    }
-
     label {
       display: block;
       margin-bottom: 6px;
@@ -116,8 +111,7 @@
     }
 
     input,
-    textarea,
-    select {
+    textarea {
       width: 100%;
       border: none;
       border-bottom: 2px solid rgba(0,0,0,0.22);
@@ -130,15 +124,22 @@
     }
 
     input:focus,
-    textarea:focus,
-    select:focus {
+    textarea:focus {
       border-bottom-color: var(--accent);
     }
 
     textarea {
-      min-height: 90px;
+      min-height: 82px;
       resize: vertical;
       line-height: 1.45;
+    }
+
+    .short-textarea {
+      min-height: 62px;
+    }
+
+    .step-item textarea {
+      min-height: 58px;
     }
 
     .row-2 {
@@ -162,12 +163,22 @@
       font-size: 14px;
     }
 
-    .step-item {
-      margin-bottom: 12px;
+    .step-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
     }
 
-    .step-item textarea {
-      min-height: 76px;
+    .remove-step {
+      border: none;
+      background: transparent;
+      color: var(--error);
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .btn-row {
@@ -217,7 +228,8 @@
       text-transform: uppercase;
     }
 
-    .required-note {
+    .required-note,
+    .word-count {
       margin-top: 10px;
       font-size: 13px;
       color: var(--muted);
@@ -270,13 +282,8 @@
         grid-template-columns: 1fr;
       }
 
-      h1 {
-        letter-spacing: 1px;
-      }
-
       input,
-      textarea,
-      select {
+      textarea {
         font-size: 16px;
       }
 
@@ -312,8 +319,21 @@
           </div>
 
           <div class="field-block required-field">
+            <label for="your_name">Your Name</label>
+            <input id="your_name" name="your_name" type="text" placeholder="Your name" />
+            <div class="error-text">This field is required.</div>
+          </div>
+
+          <div class="field-block required-field">
             <label for="food_name">Recipe Name</label>
             <input id="food_name" name="food_name" type="text" placeholder="Example: Garlic Butter Pasta" />
+            <div class="error-text">This field is required.</div>
+          </div>
+
+          <div class="field-block required-field">
+            <label for="recipe_description">Recipe Description</label>
+            <textarea id="recipe_description" name="recipe_description" class="short-textarea" placeholder="Short description, max 30 words."></textarea>
+            <div class="word-count" id="descCount">0 / 30 words</div>
             <div class="error-text">This field is required.</div>
           </div>
 
@@ -421,18 +441,64 @@
     const tagsDiv = document.getElementById("tags");
     const addStepBtn = document.getElementById("addStepBtn");
     const addTagBtn = document.getElementById("addTagBtn");
+    const desc = document.getElementById("recipe_description");
+    const descCount = document.getElementById("descCount");
 
     let stepCount = 0;
     let tagCount = 0;
+
+    function countWords(text) {
+      return text.trim().split(/\s+/).filter(Boolean).length;
+    }
+
+    desc.addEventListener("input", () => {
+      let words = desc.value.trim().split(/\s+/).filter(Boolean);
+
+      if (words.length > 30) {
+        words = words.slice(0, 30);
+        desc.value = words.join(" ");
+      }
+
+      descCount.textContent = `${words.length} / 30 words`;
+    });
+
+    function refreshStepNames() {
+      const stepItems = stepsDiv.querySelectorAll(".step-item");
+
+      stepItems.forEach((item, index) => {
+        const num = index + 1;
+        const label = item.querySelector("label");
+        const textarea = item.querySelector("textarea");
+
+        label.setAttribute("for", `step_${num}`);
+        label.textContent = `Step ${num}`;
+        textarea.id = `step_${num}`;
+        textarea.name = `step_${num}`;
+        textarea.placeholder = `Describe step ${num}...`;
+      });
+
+      stepCount = stepItems.length;
+      addStepBtn.disabled = stepCount >= 10;
+    }
 
     function createRequiredStep(num) {
       const wrap = document.createElement("div");
       wrap.className = "field-block required-field step-item";
       wrap.innerHTML = `
-        <label for="step_${num}">Step ${num}</label>
+        <div class="step-head">
+          <label for="step_${num}">Step ${num}</label>
+          <button type="button" class="remove-step">Remove</button>
+        </div>
         <textarea id="step_${num}" name="step_${num}" placeholder="Describe step ${num}..."></textarea>
         <div class="error-text">This field is required.</div>
       `;
+
+      wrap.querySelector(".remove-step").addEventListener("click", () => {
+        if (stepsDiv.children.length <= 1) return;
+        wrap.remove();
+        refreshStepNames();
+      });
+
       return wrap;
     }
 
@@ -449,7 +515,7 @@
       if (stepCount >= 10) return;
       stepCount += 1;
       stepsDiv.appendChild(createRequiredStep(stepCount));
-      if (stepCount >= 10) addStepBtn.disabled = true;
+      refreshStepNames();
     }
 
     function addTag() {
@@ -466,7 +532,7 @@
     addTag();
 
     function validateField(block) {
-      const input = block.querySelector("input, textarea, select");
+      const input = block.querySelector("input, textarea");
       const value = input ? input.value.trim() : "";
       const valid = value !== "";
 
