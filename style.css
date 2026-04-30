@@ -1,7 +1,8 @@
+Replace your whole style.css with this:
+
 * {
   box-sizing: border-box;
 }
-
 html,
 body {
   margin: 0;
@@ -11,7 +12,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   overflow: hidden;
 }
-
 .phone {
   width: 100%;
   height: 100vh;
@@ -21,18 +21,15 @@ body {
   background: black;
   overflow: hidden;
 }
-
 .feed {
   height: 100vh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scrollbar-width: none;
 }
-
 .feed::-webkit-scrollbar {
   display: none;
 }
-
 .video-slide {
   height: 100vh;
   position: relative;
@@ -42,14 +39,12 @@ body {
     radial-gradient(circle at center, rgba(255, 150, 40, 0.10), transparent 34%),
     linear-gradient(180deg, #15110d, #050505);
 }
-
 .video-area {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
 }
-
 .video-area::after {
   content: "";
   position: absolute;
@@ -58,7 +53,6 @@ body {
     linear-gradient(to top, rgba(0, 0, 0, 0.88), transparent 48%),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 28%);
 }
-
 .loading-circle {
   width: 58px;
   height: 58px;
@@ -68,13 +62,11 @@ body {
   animation: spin 1s linear infinite;
   z-index: 2;
 }
-
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
-
 .top-tabs {
   position: absolute;
   top: 26px;
@@ -84,7 +76,6 @@ body {
   display: flex;
   justify-content: center;
 }
-
 .top-tabs button {
   border: none;
   border-radius: 999px;
@@ -95,7 +86,6 @@ body {
   font-weight: 800;
   backdrop-filter: blur(10px);
 }
-
 .caption {
   position: absolute;
   left: 22px;
@@ -103,14 +93,12 @@ body {
   bottom: 112px;
   z-index: 20;
 }
-
 .tag-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 14px;
 }
-
 .tag {
   background: rgba(255,255,255,0.12);
   border: 1px solid rgba(255,255,255,0.1);
@@ -120,21 +108,18 @@ body {
   font-size: 13px;
   font-weight: 800;
 }
-
 .caption h3 {
   margin: 0 0 9px;
   font-size: clamp(26px, 6vw, 34px);
   font-weight: 900;
   letter-spacing: -1px;
 }
-
 .caption p {
   margin: 0;
   color: #e8e8e8;
   font-size: clamp(15px, 3.5vw, 18px);
   line-height: 1.38;
 }
-
 .menu-lines {
   position: absolute;
   right: 18px;
@@ -150,13 +135,11 @@ body {
   display: grid;
   place-items: center;
 }
-
 .menu-lines div {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-
 .menu-lines span {
   width: 19px;
   height: 2px;
@@ -164,22 +147,15 @@ body {
   border-radius: 999px;
   display: block;
 }
-
 .bottom-nav {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: env(safe-area-inset-bottom, 0px);
-  height: 76px;
   z-index: 25;
   display: flex;
   align-items: center;
   justify-content: space-around;
   background: rgba(0,0,0,0.94);
   border-top: 1px solid rgba(255,255,255,0.08);
-  padding-bottom: 8px;
 }
-
 .bottom-nav button,
 .bottom-nav a {
   background: none;
@@ -190,70 +166,69 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
-
 .bottom-nav .active {
   color: #d9a15f;
 }
-
 .bottom-nav .post {
   background: white;
   color: black;
   padding: 11px 22px;
   border-radius: 999px;
 }
-
-/* Laptop / desktop web */
-@media (min-width: 800px) {
+/* Desktop / laptop */
+@media (min-width: 601px) {
   body {
     background: #111;
   }
-
   .phone {
     max-width: 620px;
     border-left: 1px solid #222;
     border-right: 1px solid #222;
   }
-
   .caption {
     left: 34px;
     right: 105px;
     bottom: 125px;
   }
-
   .menu-lines {
     right: 30px;
     bottom: 140px;
   }
-
   .top-tabs {
     top: 30px;
   }
-
   .bottom-nav {
+    left: 0;
+    right: 0;
     bottom: 0;
-    height: 78px;
-    padding-bottom: 0;
+    height: 76px;
+    border-radius: 0;
   }
 }
-
-/* Mobile web Safari version */
+/* Mobile web browser */
 @media (max-width: 600px) {
+  .phone {
+    max-width: none;
+  }
   .caption {
     left: 18px;
     right: 72px;
-    bottom: 155px;
+    bottom: 220px;
   }
-
   .menu-lines {
     right: 14px;
-    bottom: 175px;
+    bottom: 238px;
     width: 42px;
     height: 42px;
   }
-
   .bottom-nav {
-    bottom: 68px;
-    height: 64px;
-    border-radius: 24px 24px 0 0;
+    left: 16px;
+    right: 16px;
+    bottom: 125px;
+    height: 62px;
+    border-radius: 24px;
+  }
+  .top-tabs {
+    top: 92px;
   }
 }
