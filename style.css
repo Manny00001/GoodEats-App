@@ -6,8 +6,8 @@ html,
 body {
   margin: 0;
   height: 100%;
-  background: #080808;
-  color: white;
+  background: #f7f3ec;
+  color: #1b1b1b;
   font-family: Arial, Helvetica, sans-serif;
   overflow: hidden;
 }
@@ -18,7 +18,7 @@ body {
   max-width: 540px;
   margin: 0 auto;
   position: relative;
-  background: black;
+  background: #fffaf2;
   overflow: hidden;
 }
 
@@ -39,8 +39,8 @@ body {
   scroll-snap-align: start;
   overflow: hidden;
   background:
-    radial-gradient(circle at center, rgba(255, 150, 40, 0.10), transparent 34%),
-    linear-gradient(180deg, #15110d, #050505);
+    radial-gradient(circle at center, rgba(255, 190, 95, 0.32), transparent 34%),
+    linear-gradient(180deg, #fffaf2, #f7efe3);
 }
 
 .video-area {
@@ -55,15 +55,15 @@ body {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to top, rgba(0, 0, 0, 0.88), transparent 48%),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 28%);
+    linear-gradient(to top, rgba(255, 250, 242, 0.95), transparent 42%),
+    linear-gradient(to bottom, rgba(255, 250, 242, 0.75), transparent 30%);
 }
 
 .loading-circle {
   width: 58px;
   height: 58px;
-  border: 5px solid rgba(255,255,255,0.14);
-  border-top-color: #d9a15f;
+  border: 5px solid rgba(0,0,0,0.09);
+  border-top-color: #d18b45;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   z-index: 2;
@@ -86,13 +86,14 @@ body {
 }
 
 .top-tabs button {
-  border: none;
+  border: 1px solid rgba(0,0,0,0.08);
   border-radius: 999px;
   padding: 9px 18px;
-  background: rgba(255,255,255,0.12);
-  color: white;
+  background: rgba(255,255,255,0.82);
+  color: #1b1b1b;
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 900;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
   backdrop-filter: blur(10px);
 }
 
@@ -112,27 +113,29 @@ body {
 }
 
 .tag {
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: #e0b57f;
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(0,0,0,0.08);
+  color: #b36a2e;
   padding: 7px 10px;
   border-radius: 999px;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 900;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
 .caption h3 {
   margin: 0 0 9px;
-  font-size: clamp(26px, 6vw, 34px);
+  font-size: clamp(28px, 6vw, 38px);
   font-weight: 900;
   letter-spacing: -1px;
+  color: #111;
 }
 
 .caption p {
   margin: 0;
-  color: #e8e8e8;
+  color: #3d342b;
   font-size: clamp(15px, 3.5vw, 18px);
-  line-height: 1.38;
+  line-height: 1.4;
 }
 
 .menu-lines {
@@ -143,9 +146,9 @@ body {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: none;
-  background: rgba(255,255,255,0.13);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.86);
+  box-shadow: 0 8px 26px rgba(0,0,0,0.1);
   cursor: pointer;
   display: grid;
   place-items: center;
@@ -160,7 +163,7 @@ body {
 .menu-lines span {
   width: 19px;
   height: 2px;
-  background: white;
+  background: #1b1b1b;
   border-radius: 999px;
   display: block;
 }
@@ -171,15 +174,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: rgba(0,0,0,0.94);
-  border-top: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.92);
+  border-top: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.08);
+  backdrop-filter: blur(14px);
 }
 
 .bottom-nav button,
 .bottom-nav a {
   background: none;
   border: none;
-  color: #cfcfcf;
+  color: #7a6a5b;
   font-size: 14px;
   font-weight: 900;
   text-decoration: none;
@@ -187,12 +192,12 @@ body {
 }
 
 .bottom-nav .active {
-  color: #d9a15f;
+  color: #c7864a;
 }
 
 .bottom-nav .post {
-  background: white;
-  color: black;
+  background: #1b1b1b;
+  color: white;
   padding: 11px 22px;
   border-radius: 999px;
 }
@@ -205,10 +210,11 @@ body {
   bottom: 170px;
   z-index: 100;
   width: 210px;
-  background: rgba(15, 15, 15, 0.96);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.96);
+  border: 1px solid rgba(0,0,0,0.08);
   border-radius: 18px;
   overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.16);
   backdrop-filter: blur(14px);
 }
 
@@ -216,18 +222,18 @@ body {
   width: 100%;
   padding: 15px 16px;
   border: none;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
   background: transparent;
-  color: white;
+  color: #1b1b1b;
   text-align: left;
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 900;
   cursor: pointer;
 }
 
 .post-menu button:last-child {
   border-bottom: none;
-  color: #d9a15f;
+  color: #c7864a;
 }
 
 /* recipe view */
@@ -236,7 +242,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: rgba(0,0,0,0.78);
+  background: rgba(0,0,0,0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -247,12 +253,12 @@ body {
 .recipe-card-view {
   width: 100%;
   max-width: 760px;
-  background: #f4f1ec;
+  background: #fffaf2;
   color: #171717;
   padding: 30px 28px;
   position: relative;
   border: 1px solid rgba(0,0,0,0.12);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.22);
 }
 
 .recipe-card-view::before,
@@ -373,13 +379,13 @@ body {
 
 @media (min-width: 601px) {
   body {
-    background: #111;
+    background: #eee8df;
   }
 
   .phone {
     max-width: 620px;
-    border-left: 1px solid #222;
-    border-right: 1px solid #222;
+    border-left: 1px solid rgba(0,0,0,0.08);
+    border-right: 1px solid rgba(0,0,0,0.08);
   }
 
   .caption {
