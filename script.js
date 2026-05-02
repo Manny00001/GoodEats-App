@@ -141,24 +141,53 @@ function viewRecipe(post) {
       <h1>${post.name}</h1>
       <p class="recipe-desc">${post.desc}</p>
 
-      <div class="recipe-info-grid">
-        <div><b>Price</b><span>${post.price}</span></div>
-        <div><b>Servings</b><span>${post.servings}</span></div>
-        <div><b>Prep</b><span>${post.prep}</span></div>
-        <div><b>Cook</b><span>${post.cook}</span></div>
-        <div><b>Difficulty</b><span>${post.difficulty}</span></div>
-        <div><b>Appliances</b><span>${post.appliances}</span></div>
+      <div class="recipe-line-grid">
+        <div class="recipe-line">
+          <b>Estimated Price</b>
+          <span>${post.price}</span>
+        </div>
+
+        <div class="recipe-line">
+          <b>Servings</b>
+          <span>${post.servings}</span>
+        </div>
+
+        <div class="recipe-line">
+          <b>Time to Prepare</b>
+          <span>${post.prep}</span>
+        </div>
+
+        <div class="recipe-line">
+          <b>Time to Cook</b>
+          <span>${post.cook}</span>
+        </div>
+
+        <div class="recipe-line">
+          <b>Difficulty</b>
+          <span>${post.difficulty}</span>
+        </div>
+
+        <div class="recipe-line">
+          <b>Appliances</b>
+          <span>${post.appliances}</span>
+        </div>
       </div>
 
-      <h2>Ingredients</h2>
-      <ul>
-        ${post.ingredients.map(item => `<li>${item}</li>`).join("")}
-      </ul>
+      <section class="recipe-section">
+        <h2>Ingredients</h2>
+        ${post.ingredients.map(item => `
+          <div class="filled-line">${item}</div>
+        `).join("")}
+      </section>
 
-      <h2>Steps</h2>
-      <ol>
-        ${post.steps.map(step => `<li>${step}</li>`).join("")}
-      </ol>
+      <section class="recipe-section">
+        <h2>Preparation</h2>
+        ${post.steps.map((step, index) => `
+          <div class="filled-line">
+            <strong>Step ${index + 1}.</strong> ${step}
+          </div>
+        `).join("")}
+      </section>
     </div>
   `;
 
